@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"
-            android:text="@string/server_name" />
+            android:text="@string/infrastructure_textview_name" />
 
         <TextView
             android:id="@+id/infrastructure_server_ip"
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:textSize="18dp"
             android:layout_below="@+id/infrastructure_server_name"
-            android:text="@string/server_ip" />
+            android:text="@string/infrastructure_textview_ip" />
 
     </LinearLayout>
 

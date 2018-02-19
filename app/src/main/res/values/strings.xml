@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">UMTZ</string>
-    <string name="server_name">Server Name</string>
-    <string name="server_ip">Server IP</string>
-    <string name="server_name_detail">Server Name</string>
-    <string name="server_ip_detail">Server ip</string>
+    <string name="infrastructure_textview_name">Server Name</string>
+    <string name="infrastructure_textview_ip">Server IP</string>
+    <string name="server_textview_name">Server Name</string>
+    <string name="server_textview_ip">Server ip</string>
+    <string name="server_button_start">Start</string>
+    <string name="server_button_stop">Stop</string>
+    <string name="server_button_restart">Restart</string>
 
 </resources>

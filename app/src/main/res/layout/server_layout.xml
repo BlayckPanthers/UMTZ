@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_margin="35dip"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp">
+
+
+        <TextView
+            android:id="@+id/server_name_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/server_textview_name"
+            />
+
+
+
+        <TextView
+            android:id="@+id/server_ip_detail"
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            android:text="@string/server_textview_ip"
+            android:maxHeight="250dp"
+            android:paddingTop="15dp"
+            />
+
+       <!-- <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/server_button_start"
+            android:textColor="@color/colorWhite"
+            android:backgroundTint="@color/colorStartButton"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/server_button_restart"
+            android:textColor="@color/colorWhite"
+            android:backgroundTint="@color/colorStartButton"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/server_button_stop"
+            android:textColor="@color/colorWhite"
+            android:backgroundTint="@color/colorStopButton"
+            /> -->
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/server_status_detail"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="35dip"
+        />
+</RelativeLayout>
