@@ -2,6 +2,7 @@ package com.ingesup.docblayck.umtz;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
@@ -39,21 +40,19 @@ public class InfrastructureAdapter extends ArrayAdapter<Infrastructure> {
         }
 
         //getItem(position) va récupérer l'item [position] de la List<Infrastructure> infrastructures
-        Infrastructure Infrastructure = getItem(position);
+        final Infrastructure Server = getItem(position);
 
         // Remplissage de la vue.
-        viewHolder.server_name.setText(Infrastructure.getServer_name());
-        viewHolder.server_ip.setText(Infrastructure.getServer_ip());
-        viewHolder.server_status.setImageResource(Infrastructure.getServer_status());
+        viewHolder.server_name.setText(Server.getServer_name());
+        viewHolder.server_ip.setText(Server.getServer_ip());
+        viewHolder.server_status.setImageResource(Server.getServer_status());
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-                Toast.makeText(getContext(), getItem(position).getServer_ip()
-                        + " " + getItem(position).getServer_name()
-                        , Toast.LENGTH_SHORT).show();
+                Intent itemIntent = new Intent(getContext(), ServerActivity.class);
+                itemIntent.putExtra("server_parcelable_extra",Server);
+                getContext().startActivity(itemIntent);
             }
         });
 

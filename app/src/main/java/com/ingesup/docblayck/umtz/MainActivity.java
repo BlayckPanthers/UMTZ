@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.infrastructure_layout);
 
-        /*
         // ListView affichant la liste des serveurs
         ListView mListView = (ListView) findViewById(R.id.serverList);
 
@@ -31,11 +30,11 @@ public class MainActivity extends AppCompatActivity {
         InfrastructureAdapter adapter = new InfrastructureAdapter(MainActivity.this, myInfras);
 
         mListView.setAdapter(adapter);
-        */
+
     }
 
-    /*
-    // TODO: Fonction de recuperation de la liste des serveurs en GET via Centreon 
+
+    // TODO: Fonction de recuperation de la liste des serveurs en GET via Centreon
     // Actuellement la liste est générée en dur. vert : Color.rgb(34,139,34) ; rouge :
     private List<Infrastructure> genererInfra(){
         List<Infrastructure> myList = new ArrayList<Infrastructure>();
@@ -46,5 +45,5 @@ public class MainActivity extends AppCompatActivity {
         myList.add(new Infrastructure("ns2307112.ovh.net","13.55.69.191",R.drawable.ic_red_button));
 
         return myList;
-    }*/
+    }
 }

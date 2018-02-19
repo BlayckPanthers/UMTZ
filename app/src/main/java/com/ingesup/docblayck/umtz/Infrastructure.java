@@ -2,13 +2,15 @@ package com.ingesup.docblayck.umtz;
 
 import android.graphics.drawable.Drawable;
 import android.media.Image;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.widget.ImageView;
 
 /**
  * Created by fabienlebon on 16/02/2018.
  */
 
-public class Infrastructure {
+public class Infrastructure implements Parcelable{
 
     private String server_name;
     private String server_ip;
@@ -19,6 +21,36 @@ public class Infrastructure {
         this.server_ip = serverIp;
         this.server_status = serverStatus;
     }
+
+    protected Infrastructure(Parcel in) {
+        server_name = in.readString();
+        server_ip = in.readString();
+        server_status = in.readInt();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(server_name);
+        dest.writeString(server_ip);
+        dest.writeInt(server_status);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Infrastructure> CREATOR = new Creator<Infrastructure>() {
+        @Override
+        public Infrastructure createFromParcel(Parcel in) {
+            return new Infrastructure(in);
+        }
+
+        @Override
+        public Infrastructure[] newArray(int size) {
+            return new Infrastructure[size];
+        }
+    };
 
     public String getServer_name() {
         return server_name;
@@ -40,4 +72,7 @@ public class Infrastructure {
         return server_status;
     }
 
+    public void setServer_status(int server_status) {
+        this.server_status = server_status;
+    }
 }
