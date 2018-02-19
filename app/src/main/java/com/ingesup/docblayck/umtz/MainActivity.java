@@ -1,49 +1,46 @@
 package com.ingesup.docblayck.umtz;
 
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ImageView;
-import android.widget.ListView;
+import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static android.R.attr.id;
+import com.ingesup.docblayck.umtz.Entities.User;
+import com.ingesup.docblayck.umtz.Tasks.AsyncTaskUser;
 
 public class MainActivity extends AppCompatActivity {
 
+    private EditText edtEmail,edtPassword ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.infrastructure_layout);
+        getSupportActionBar().hide();
+        setContentView(R.layout.activity_main);
+        edtEmail = (EditText) findViewById(R.id.editTextMail);
+        edtPassword = (EditText) findViewById(R.id.editTextPassword);
+    }
 
-        // ListView affichant la liste des serveurs
-        ListView mListView = (ListView) findViewById(R.id.serverList);
+    public void buttonConnexionClick(View v){
+        String email = edtEmail.getText().toString();
+        String password = edtPassword.getText().toString();
 
-        // Liste contenant les serveurs générés.
-        List<Infrastructure> myInfras = genererInfra();
+        if(email.equals("") || password.equals(""))
+        {
+            Toast.makeText(getApplicationContext(),"Veuillez remplir les champs",Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            User user = new User();
+            user.setEmail(email);
+            user.setPassword(password);
+            new AsyncTaskUser(MainActivity.this,user,true).execute("https://reqres.in/api/login");
 
-        InfrastructureAdapter adapter = new InfrastructureAdapter(MainActivity.this, myInfras);
-
-        mListView.setAdapter(adapter);
+        }
 
     }
 
 
-    // TODO: Fonction de recuperation de la liste des serveurs en GET via Centreon
-    // Actuellement la liste est générée en dur. vert : Color.rgb(34,139,34) ; rouge :
-    private List<Infrastructure> genererInfra(){
-        List<Infrastructure> myList = new ArrayList<Infrastructure>();
 
-        myList.add(new Infrastructure("ns2307123.ovh.net","13.55.69.192",R.drawable.ic_green_button));
-        myList.add(new Infrastructure("ns2307456.ovh.net","13.55.69.193",R.drawable.ic_green_button));
-        myList.add(new Infrastructure("ns2307789.ovh.net","13.55.69.194",R.drawable.ic_green_button));
-        myList.add(new Infrastructure("ns2307112.ovh.net","13.55.69.191",R.drawable.ic_red_button));
-
-        return myList;
-    }
 }

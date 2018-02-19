@@ -7,5 +7,13 @@
     <string name="server_button_start">Start</string>
     <string name="server_button_stop">Stop</string>
     <string name="server_button_restart">Restart</string>
+    <string name="login_edittext_mail">Mail</string>
+    <string name="login_edittext_password">Password</string>
+    <string name="login_button_connexion">Connexion</string>
+    <string name="txt_Show">Progressing Please wait...</string>
+    <string name="server_name">Server Name</string>
+    <string name="server_ip">Server IP</string>
+    <string name="server_name_detail">Server Name</string>
+    <string name="server_ip_detail">Server ip</string>
 
 </resources>
