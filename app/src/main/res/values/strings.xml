@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">UMTZ</string>
+    <string name="server_name">Server Name</string>
+    <string name="server_ip">Server IP</string>
 </resources>
