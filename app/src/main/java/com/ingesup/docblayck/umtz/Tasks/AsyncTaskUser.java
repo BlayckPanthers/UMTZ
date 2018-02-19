@@ -2,6 +2,7 @@ package com.ingesup.docblayck.umtz.Tasks;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -9,6 +10,8 @@ import android.widget.Toast;
 
 import com.ingesup.docblayck.umtz.Entities.User;
 import com.ingesup.docblayck.umtz.R;
+import com.ingesup.docblayck.umtz.ServerActivity;
+import com.ingesup.docblayck.umtz.ServerListActivity;
 import com.loopj.android.http.RequestParams;
 import org.json.JSONObject;
 
@@ -110,6 +113,8 @@ public class AsyncTaskUser extends AsyncTask<String,String,String> {
                 Log.d("result", (new JSONObject(sb.toString())).getString("token"));
                 user.setToken((new JSONObject(sb.toString())).getString("token"));
                 pDialog.dismiss();
+                Intent intent = new Intent(activity.getApplicationContext(), ServerListActivity.class);
+                activity.getApplicationContext().startActivity(intent);
                 in.close();
                 return sb.toString();
             }

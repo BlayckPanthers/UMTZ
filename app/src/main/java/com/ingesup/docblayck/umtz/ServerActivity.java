@@ -6,6 +6,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ingesup.docblayck.umtz.Entities.Infrastructure;
+
 public class ServerActivity extends Activity {
 
     @Override
@@ -22,8 +24,9 @@ public class ServerActivity extends Activity {
 
         serverName.setText(serverParcelable.getServer_name());
         serverIP.setText(serverParcelable.getServer_ip());
-        serverStatus.setImageResource(serverParcelable.getServer_status());
 
+        Toast.makeText(ServerActivity.this, serverParcelable.getServer_ip()
+                        + " " + serverParcelable.getServer_name()
+                , Toast.LENGTH_SHORT).show();
     }
-
 }

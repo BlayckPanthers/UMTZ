@@ -1,10 +1,7 @@
-package com.ingesup.docblayck.umtz;
+package com.ingesup.docblayck.umtz.Entities;
 
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.widget.ImageView;
 
 /**
  * Created by fabienlebon on 16/02/2018.
