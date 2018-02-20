@@ -117,7 +117,8 @@
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             android:padding="12dp"
-            android:text="Create Account"/>
+            android:text="Create Account"
+            android:onClick="buttonSendFormRegister"/>
 
         <TextView android:id="@+id/link_login"
             android:layout_width="fill_parent"
@@ -125,7 +126,8 @@
             android:layout_marginBottom="24dp"
             android:text="Already a member? Login"
             android:gravity="center"
-            android:textSize="16dip"/>
+            android:textSize="16dip"
+            android:onClick="buttonAlreadyMemberClick"/>
 
     </LinearLayout>
 </ScrollView>

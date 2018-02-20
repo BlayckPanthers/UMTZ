@@ -1,7 +1,9 @@
 package com.ingesup.docblayck.umtz;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 public class RegisterActivity extends Activity {
 
@@ -9,5 +11,14 @@ public class RegisterActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_layout);
+    }
+
+    public void buttonAlreadyMemberClick(View view){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void buttonSendFormRegister(View view){
+
     }
 }
