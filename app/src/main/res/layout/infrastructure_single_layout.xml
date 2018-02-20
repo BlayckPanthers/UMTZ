@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
+    >
     <LinearLayout
         android:id="@+id/infrastructure_server"
         android:layout_width="wrap_content"
@@ -29,10 +31,55 @@
 
     <ImageView
         android:id="@+id/infrastructure_server_status"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_toRightOf="@id/infrastructure_server"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="10dp" />
+
+    <Button
+        android:id="@+id/infrastructure_button_ok"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/ic_greenlight_button"
+        android:clickable="false"
+        android:text="3"
+        android:layout_toRightOf="@id/infrastructure_server_status"/>
+
+    <Button
+        android:id="@+id/infrastructure_button_warning"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/ic_orange_button"
+        android:clickable="false"
+        android:text="15"
+        android:layout_toRightOf="@id/infrastructure_button_ok"/>
+
+    <Button
+        android:id="@+id/infrastructure_button_error"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/ic_redlight_button"
+        android:clickable="false"
+
+        android:text="2"
+        android:layout_toRightOf="@id/infrastructure_button_warning"/>
+
+    <Button
+        android:id="@+id/infrastructure_button_unkwown"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/ic_grey_button"
+        android:clickable="false"
+        android:text="0"
+        android:layout_toRightOf="@id/infrastructure_button_error"/>
 
 </RelativeLayout>

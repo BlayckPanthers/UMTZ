@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,9 +33,13 @@ public class InfrastructureAdapter extends ArrayAdapter<Infrastructure> {
         InfrastructureViewHolder viewHolder = (InfrastructureViewHolder) convertView.getTag();
         if(viewHolder == null){
             viewHolder = new InfrastructureViewHolder();
-            viewHolder.server_name = (TextView) convertView.findViewById(R.id.infrastructure_server_name);
-            viewHolder.server_ip = (TextView) convertView.findViewById(R.id.infrastructure_server_ip);
-            viewHolder.server_status = (ImageView) convertView.findViewById(R.id.infrastructure_server_status);
+            viewHolder.server_name      = (TextView) convertView.findViewById(R.id.infrastructure_server_name);
+            viewHolder.server_ip        = (TextView) convertView.findViewById(R.id.infrastructure_server_ip);
+            viewHolder.server_status    = (ImageView) convertView.findViewById(R.id.infrastructure_server_status);
+            viewHolder.server_warning   = (Button) convertView.findViewById(R.id.infrastructure_button_warning);
+            viewHolder.server_error     = (Button) convertView.findViewById(R.id.infrastructure_button_error);
+            viewHolder.server_unkwown   = (Button) convertView.findViewById(R.id.infrastructure_button_unkwown);
+
             convertView.setTag(viewHolder);
         }
 
@@ -69,6 +74,9 @@ public class InfrastructureAdapter extends ArrayAdapter<Infrastructure> {
         public TextView     server_name;
         public TextView     server_ip;
         public ImageView    server_status;
+        public Button       server_warning;
+        public Button       server_error;
+        public Button       server_unkwown;
     }
 
 }

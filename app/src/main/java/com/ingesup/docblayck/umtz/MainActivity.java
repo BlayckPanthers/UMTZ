@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             User user = new User();
             user.setEmail(email);
             user.setPassword(password);
-            new AsyncTaskUser(MainActivity.this,user,true).execute("https://reqres.in/api/login");
+            new AsyncTaskUser(MainActivity.this, user,true).execute("https://reqres.in/api/login");
 
         }
 
