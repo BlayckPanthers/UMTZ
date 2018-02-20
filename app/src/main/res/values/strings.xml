@@ -15,5 +15,5 @@
     <string name="server_ip">Server IP</string>
     <string name="server_name_detail">Server Name</string>
     <string name="server_ip_detail">Server ip</string>
-
+    <string name="loggin_textview_link">Pas de compte ? Inscrivez-vous</string>
 </resources>

@@ -1,10 +1,12 @@
 package com.ingesup.docblayck.umtz;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ingesup.docblayck.umtz.Entities.User;
@@ -13,6 +15,8 @@ import com.ingesup.docblayck.umtz.Tasks.AsyncTaskUser;
 public class MainActivity extends AppCompatActivity {
 
     private EditText edtEmail,edtPassword ;
+    private TextView txvLink;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         edtEmail = (EditText) findViewById(R.id.editTextMail);
         edtPassword = (EditText) findViewById(R.id.editTextPassword);
+        txvLink = (TextView) findViewById(R.id.textViewLink);
+
     }
 
     public void buttonConnexionClick(View v){
@@ -41,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
+    public void buttonLinkClick(View view) {
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
+    }
 }

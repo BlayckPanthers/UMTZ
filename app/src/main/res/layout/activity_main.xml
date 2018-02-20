@@ -40,6 +40,13 @@
         android:onClick="buttonConnexionClick"
         tools:layout_editor_absoluteX="123dp"
         tools:layout_editor_absoluteY="231dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/loggin_textview_link"
+        android:id="@+id/textViewLink"
+        android:layout_marginTop="15dp"
+        android:onClick="buttonLinkClick"/>
 </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

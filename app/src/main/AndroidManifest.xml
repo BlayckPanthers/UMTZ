@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ServerActivity" />
-        <activity android:name=".ServerListActivity"></activity>
+        <activity android:name=".ServerListActivity" />
+        <activity android:name=".RegisterActivity"></activity>
     </application>
 
 </manifest>
