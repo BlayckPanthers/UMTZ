@@ -12,17 +12,26 @@ public class Infrastructure implements Parcelable{
     private String server_name;
     private String server_ip;
     private int server_status;
+    private int server_warning;
+    private int server_error;
+    private int server_unkwown;
 
-    public Infrastructure(String serverName, String serverIp, int serverStatus){
-        this.server_name = serverName;
-        this.server_ip = serverIp;
-        this.server_status = serverStatus;
+    public Infrastructure(String server_name, String server_ip, int server_status, int server_warning, int server_error, int server_unkwown) {
+        this.server_name = server_name;
+        this.server_ip = server_ip;
+        this.server_status = server_status;
+        this.server_warning = server_warning;
+        this.server_error = server_error;
+        this.server_unkwown = server_unkwown;
     }
 
     protected Infrastructure(Parcel in) {
         server_name = in.readString();
         server_ip = in.readString();
         server_status = in.readInt();
+        server_warning = in.readInt();
+        server_error = in.readInt();
+        server_unkwown = in.readInt();
     }
 
     @Override
@@ -30,6 +39,9 @@ public class Infrastructure implements Parcelable{
         dest.writeString(server_name);
         dest.writeString(server_ip);
         dest.writeInt(server_status);
+        dest.writeInt(server_warning);
+        dest.writeInt(server_error);
+        dest.writeInt(server_unkwown);
     }
 
     @Override
@@ -71,5 +83,33 @@ public class Infrastructure implements Parcelable{
 
     public void setServer_status(int server_status) {
         this.server_status = server_status;
+    }
+
+    public int getServer_warning() {
+        return server_warning;
+    }
+
+    public void setServer_warning(int server_warning) {
+        this.server_warning = server_warning;
+    }
+
+    public int getServer_error() {
+        return server_error;
+    }
+
+    public void setServer_error(int server_error) {
+        this.server_error = server_error;
+    }
+
+    public int getServer_unkwown() {
+        return server_unkwown;
+    }
+
+    public void setServer_unkwown(int server_unkwown) {
+        this.server_unkwown = server_unkwown;
+    }
+
+    public static Creator<Infrastructure> getCREATOR() {
+        return CREATOR;
     }
 }
