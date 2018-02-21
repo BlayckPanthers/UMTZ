@@ -103,6 +103,6 @@ public class RegisterActivity extends Activity {
     }
 
     private void doRegister(User u){
-
+        //TODO AsyncTaskRegister
     }
 }
