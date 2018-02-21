@@ -34,7 +34,7 @@
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_toRightOf="@id/infrastructure_server"
-        android:layout_marginLeft="50dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp" />
 
     <Button
@@ -42,7 +42,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="10dp"
         android:background="@drawable/ic_greenlight_button"
         android:clickable="false"
         android:text="3"
@@ -53,7 +53,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="10dp"
         android:background="@drawable/ic_orange_button"
         android:clickable="false"
         android:text="15"
@@ -64,7 +64,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="10dp"
         android:background="@drawable/ic_redlight_button"
         android:clickable="false"
 
@@ -76,7 +76,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="10dp"
         android:background="@drawable/ic_grey_button"
         android:clickable="false"
         android:text="0"

@@ -32,7 +32,7 @@ import javax.net.ssl.HttpsURLConnection;
  * Created by Najib on 16/02/2018.
  */
 
-public class AsyncTaskUser extends AsyncTask<String,String,String> {
+public class AsyncTaskConnexion extends AsyncTask<String,String,String> {
 
 
     private ProgressDialog pDialog ;
@@ -42,7 +42,7 @@ public class AsyncTaskUser extends AsyncTask<String,String,String> {
     private SharedPreferences pre ;
     private SharedPreferences.Editor editor ;
 
-    public AsyncTaskUser(Activity activity , User user, Boolean isSignIn){
+    public AsyncTaskConnexion(Activity activity , User user, Boolean isSignIn){
 
         this.activity = activity ;
         this.user = user;

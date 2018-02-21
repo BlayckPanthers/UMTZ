@@ -10,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ingesup.docblayck.umtz.Entities.User;
-import com.ingesup.docblayck.umtz.Tasks.AsyncTaskUser;
+import com.ingesup.docblayck.umtz.Tasks.AsyncTaskConnexion;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             User user = new User();
             user.setEmail(email);
             user.setPassword(password);
-            new AsyncTaskUser(MainActivity.this, user,true).execute("https://reqres.in/api/login");
+            new AsyncTaskConnexion(MainActivity.this,user,true).execute("https://reqres.in/api/login");
 
         }
 
