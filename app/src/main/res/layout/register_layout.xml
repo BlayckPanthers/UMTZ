@@ -22,36 +22,58 @@
 
         <!--  login Label -->
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/register_edt_emailWrapper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/input_login"
+            <EditText
+                android:id="@+id/register_edt_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords"
-                android:hint="Login" />
+                android:hint="Email" />
         </android.support.design.widget.TextInputLayout>
 
         <!-- Password Label -->
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/register_edt_passwordWrapper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/input_password"
+            <EditText
+                android:id="@+id/register_edt_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:hint="Password"/>
         </android.support.design.widget.TextInputLayout>
-        <!--  Centreon Label -->
+
+        <!-- ConfirmPassword Label -->
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/register_edt_confirm_passwordWrapper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/input_user_centreon"
+            <EditText
+                android:id="@+id/register_edt_confirm_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="Confirm password"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <!--  Centreon Label -->
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/register_edt_user_centreonWrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <EditText
+                android:id="@+id/register_edt_user_centreon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords"
@@ -60,11 +82,13 @@
 
         <!-- Centreon password Label -->
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/register_edt_centreon_passwordWrapper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/input_centreon_password"
+            <EditText
+                android:id="@+id/register_edt_centreon_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
@@ -73,41 +97,21 @@
 
         <!-- Ip Centreon Label -->
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/register_edt_ip_centreonWrapper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/input_ip_centreon"
+            <EditText
+                android:id="@+id/register_edt_ip_centreon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
+                android:inputType="text"
+                android:maxLength="16"
                 android:hint="Ip centreon"/>
         </android.support.design.widget.TextInputLayout>
 
-        <!-- Question secrete Label -->
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/input_secret_question"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:hint="question secrete"/>
-        </android.support.design.widget.TextInputLayout>
-        <!-- reponse Label -->
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/input_response"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:hint="Réponse"/>
-        </android.support.design.widget.TextInputLayout>
+
 
     <!-- Signup Button -->
         <android.support.v7.widget.AppCompatButton

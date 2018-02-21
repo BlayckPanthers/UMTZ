@@ -7,7 +7,22 @@ package com.ingesup.docblayck.umtz.Entities;
 public class User {
     private String email;
     private String password;
+    private String confirmPassword;
+    private String userCentreon;
+    private String passwordCentreon;
+    private String ipCentreon;
     private String token;
+
+    public User(){}
+
+    public User(String email, String password, String userCentreon, String passwordCentreon, String ipCentreon)  {
+        this.email = email;
+        this.password = password;
+        this.confirmPassword = confirmPassword;
+        this.userCentreon = userCentreon;
+        this.passwordCentreon = passwordCentreon;
+        this.ipCentreon = ipCentreon;
+    }
 
     public String getEmail() {
         return email;
@@ -15,6 +30,46 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
+    public String getUserCentreon() {
+        return userCentreon;
+    }
+
+    public void setUserCentreon(String userCentreon) {
+        this.userCentreon = userCentreon;
+    }
+
+    public String getPasswordCentreon() {
+        return passwordCentreon;
+    }
+
+    public void setPasswordCentreon(String passwordCentreon) {
+        this.passwordCentreon = passwordCentreon;
+    }
+
+    public String getIpCentreon() {
+        return ipCentreon;
+    }
+
+    public void setIpCentreon(String ipCentreon) {
+        this.ipCentreon = ipCentreon;
     }
 
     public String getToken() {
@@ -25,11 +80,5 @@ public class User {
         this.token = token;
     }
 
-    public String getPassword() {
-        return password;
-    }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

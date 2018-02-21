@@ -15,7 +15,6 @@ import com.ingesup.docblayck.umtz.Tasks.AsyncTaskConnexion;
 public class MainActivity extends AppCompatActivity {
 
     private EditText edtEmail,edtPassword ;
-    private TextView txvLink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         edtEmail = (EditText) findViewById(R.id.editTextMail);
         edtPassword = (EditText) findViewById(R.id.editTextPassword);
-        txvLink = (TextView) findViewById(R.id.textViewLink);
 
     }
 
