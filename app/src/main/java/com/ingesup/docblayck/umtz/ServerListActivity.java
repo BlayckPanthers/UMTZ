@@ -3,8 +3,10 @@ package com.ingesup.docblayck.umtz;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.ingesup.docblayck.umtz.Entities.Infrastructure;
+import com.ingesup.docblayck.umtz.Global.GlobalData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,9 +27,14 @@ public class ServerListActivity extends Activity {
         InfrastructureAdapter adapter = new InfrastructureAdapter(ServerListActivity.this, myInfras);
 
         mListView.setAdapter(adapter);
+        Toast.makeText(getApplicationContext(), GlobalData.getInstance().getUser().getEmail(),Toast.LENGTH_SHORT).show();
 
     }
 
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(getApplicationContext(),"Vous étes deja conncté",Toast.LENGTH_SHORT).show();
+    }
 
     // TODO: Fonction de recuperation de la liste des serveurs en GET via Centreon
     // Actuellement la liste est générée en dur. vert : Color.rgb(34,139,34) ; rouge :

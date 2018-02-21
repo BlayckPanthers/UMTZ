@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.ingesup.docblayck.umtz.Entities.User;
+import com.ingesup.docblayck.umtz.Global.GlobalData;
 import com.ingesup.docblayck.umtz.R;
 import com.ingesup.docblayck.umtz.ServerActivity;
 import com.ingesup.docblayck.umtz.ServerListActivity;
@@ -39,8 +40,6 @@ public class AsyncTaskConnexion extends AsyncTask<String,String,String> {
     private Activity activity ;
     private User user ;
     private Boolean isSignIn = false;
-    private SharedPreferences pre ;
-    private SharedPreferences.Editor editor ;
 
     public AsyncTaskConnexion(Activity activity , User user, Boolean isSignIn){
 
@@ -110,8 +109,8 @@ public class AsyncTaskConnexion extends AsyncTask<String,String,String> {
                     sb.append(line);
                     break;
                 }
-                Log.d("result", (new JSONObject(sb.toString())).getString("token"));
                 user.setToken((new JSONObject(sb.toString())).getString("token"));
+                GlobalData.getInstance().setUser(user);
                 pDialog.dismiss();
                 Intent intent = new Intent(activity.getApplicationContext(), ServerListActivity.class);
                 activity.getApplicationContext().startActivity(intent);
