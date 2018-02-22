@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.ingesup.docblayck.umtz.Entities.Infrastructure;
 import com.ingesup.docblayck.umtz.Global.GlobalData;
+import com.ingesup.docblayck.umtz.Tasks.AsyncTaskServers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,13 +23,17 @@ public class ServerListActivity extends Activity {
         ListView mListView = (ListView) findViewById(R.id.serverList);
 
         // Liste contenant les serveurs générés.
-        List<Infrastructure> myInfras = genererInfra();
+        //List<Infrastructure> myInfras = genererInfra();
+        List<Infrastructure> myInfras;
+        try{
+            myInfras = new AsyncTaskServers(this).execute("http://172.20.10.3:8080/CentreonWebService/api/verifUser").get();
+            InfrastructureAdapter adapter = new InfrastructureAdapter(ServerListActivity.this, myInfras);
 
-        InfrastructureAdapter adapter = new InfrastructureAdapter(ServerListActivity.this, myInfras);
+            mListView.setAdapter(adapter);
+            Toast.makeText(getApplicationContext(), GlobalData.getInstance().getUser().getEmail(),Toast.LENGTH_SHORT).show();
+        }catch (Exception e){
 
-        mListView.setAdapter(adapter);
-        Toast.makeText(getApplicationContext(), GlobalData.getInstance().getUser().getEmail(),Toast.LENGTH_SHORT).show();
-
+        }
     }
 
     @Override

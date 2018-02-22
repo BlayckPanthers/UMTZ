@@ -7,7 +7,6 @@ package com.ingesup.docblayck.umtz.Entities;
 public class User {
     private String email;
     private String password;
-    private String confirmPassword;
     private String userCentreon;
     private String passwordCentreon;
     private String ipCentreon;
@@ -18,7 +17,6 @@ public class User {
     public User(String email, String password, String userCentreon, String passwordCentreon, String ipCentreon)  {
         this.email = email;
         this.password = password;
-        this.confirmPassword = confirmPassword;
         this.userCentreon = userCentreon;
         this.passwordCentreon = passwordCentreon;
         this.ipCentreon = ipCentreon;
@@ -38,14 +36,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
-
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
     }
 
     public String getUserCentreon() {
