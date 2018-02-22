@@ -44,7 +44,7 @@ public class LoginActivty  extends AppCompatActivity {
             User user = new User();
             user.setEmail(email);
             user.setPassword(password);
-            new AsyncTaskConnexion(LoginActivty.this, user,true).execute("https://reqres.in/api/login");
+            new AsyncTaskConnexion(LoginActivty.this, user,true).execute("http://172.20.10.3:8080/CentreonWebService/api/verifUser");
         }
 
     }

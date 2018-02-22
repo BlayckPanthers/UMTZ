@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ingesup.docblayck.umtz.Entities.User;
+import com.ingesup.docblayck.umtz.Tasks.AsyncTaskConnexion;
+import com.ingesup.docblayck.umtz.Tasks.AsyncTaskRegister;
 import com.ingesup.docblayck.umtz.Tools.EmailValidator;
 import com.ingesup.docblayck.umtz.Tools.EncryptPassword;
 import com.ingesup.docblayck.umtz.Tools.IPAddressValidator;
@@ -103,6 +105,7 @@ public class RegisterActivity extends Activity {
     }
 
     private void doRegister(User u){
-        //TODO AsyncTaskRegister
+        new AsyncTaskRegister(RegisterActivity.this, u).execute("https://reqres.in/api/login");
+
     }
 }
