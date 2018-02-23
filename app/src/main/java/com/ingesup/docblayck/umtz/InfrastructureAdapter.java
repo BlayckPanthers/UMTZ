@@ -35,7 +35,7 @@ public class InfrastructureAdapter extends ArrayAdapter<Infrastructure> {
             viewHolder = new InfrastructureViewHolder();
             viewHolder.server_name      = (TextView) convertView.findViewById(R.id.infrastructure_server_name);
             viewHolder.server_ip        = (TextView) convertView.findViewById(R.id.infrastructure_server_ip);
-            //viewHolder.server_status    = (Button) convertView.findViewById(R.id.infrastructure_server_status);
+            viewHolder.server_status    = (Button) convertView.findViewById(R.id.infrastructure_server_status);
             viewHolder.server_ok        = (Button) convertView.findViewById(R.id.infrastructure_button_ok);
             viewHolder.server_warning   = (Button) convertView.findViewById(R.id.infrastructure_button_warning);
             viewHolder.server_error     = (Button) convertView.findViewById(R.id.infrastructure_button_error);
@@ -50,10 +50,10 @@ public class InfrastructureAdapter extends ArrayAdapter<Infrastructure> {
         // Remplissage de la vue.
         viewHolder.server_name.setText(Server.getServer_name());
         viewHolder.server_ip.setText(Server.getServer_ip());
-        viewHolder.server_status.setText(Server.getServer_status());
-        viewHolder.server_ok.setText(Server.getServer_ok());
-        viewHolder.server_warning.setText(Server.getServer_warning());
-        viewHolder.server_unkwown.setText(Server.getServer_unkwown());
+        viewHolder.server_status.setText(String.valueOf(Server.getServer_status()));
+        viewHolder.server_ok.setText(String.valueOf(Server.getServer_ok()));
+        viewHolder.server_warning.setText(String.valueOf(Server.getServer_warning()));
+        viewHolder.server_unkwown.setText(String.valueOf(Server.getServer_unkwown()));
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,7 +77,7 @@ public class InfrastructureAdapter extends ArrayAdapter<Infrastructure> {
 
         public TextView     server_name;
         public TextView     server_ip;
-        public Button    server_status;
+        public Button       server_status;
         public Button       server_ok;
         public Button       server_warning;
         public Button       server_error;

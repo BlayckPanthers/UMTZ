@@ -17,11 +17,11 @@ public class Infrastructure implements Parcelable{
     private int server_critical;
     private int server_unkwown;
 
-    public Infrastructure(String server_name, String server_ip, int server_status,int server_ok, int server_warning, int server_critical, int server_unkwown) {
+    public Infrastructure(String server_name, String server_ip, int server_status, int server_ok, int server_warning, int server_critical, int server_unkwown) {
         this.server_name = server_name;
         this.server_ip = server_ip;
         this.server_status = server_status;
-        this.server_ok=server_ok;
+        this.server_ok = server_ok;
         this.server_warning = server_warning;
         this.server_critical = server_critical;
         this.server_unkwown = server_unkwown;
@@ -31,24 +31,10 @@ public class Infrastructure implements Parcelable{
         server_name = in.readString();
         server_ip = in.readString();
         server_status = in.readInt();
+        server_ok = in.readInt();
         server_warning = in.readInt();
         server_critical = in.readInt();
         server_unkwown = in.readInt();
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(server_name);
-        dest.writeString(server_ip);
-        dest.writeInt(server_status);
-        dest.writeInt(server_warning);
-        dest.writeInt(server_critical);
-        dest.writeInt(server_unkwown);
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
     }
 
     public static final Creator<Infrastructure> CREATOR = new Creator<Infrastructure>() {
@@ -62,6 +48,22 @@ public class Infrastructure implements Parcelable{
             return new Infrastructure[size];
         }
     };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(server_name);
+        parcel.writeString(server_ip);
+        parcel.writeInt(server_status);
+        parcel.writeInt(server_ok);
+        parcel.writeInt(server_warning);
+        parcel.writeInt(server_critical);
+        parcel.writeInt(server_unkwown);
+    }
 
     public String getServer_name() {
         return server_name;
@@ -87,9 +89,13 @@ public class Infrastructure implements Parcelable{
         this.server_status = server_status;
     }
 
-    public int getServer_ok() {return server_ok;}
+    public int getServer_ok() {
+        return server_ok;
+    }
 
-    public void setServer_ok(int server_ok) { this.server_ok = server_ok;}
+    public void setServer_ok(int server_ok) {
+        this.server_ok = server_ok;
+    }
 
     public int getServer_warning() {
         return server_warning;
