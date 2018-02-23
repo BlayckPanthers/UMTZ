@@ -14,6 +14,8 @@ import com.ingesup.docblayck.umtz.Tasks.AsyncTaskConnexion;
 import com.ingesup.docblayck.umtz.Tools.EmailValidator;
 import com.ingesup.docblayck.umtz.Tools.EncryptPassword;
 
+import java.util.concurrent.ExecutionException;
+
 /**
  * Created by Najib on 21/02/2018.
  */
@@ -31,6 +33,7 @@ public class LoginActivty  extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.login_layout);
 
+        emailValidator = new EmailValidator();
         mailWrapper = (TextInputLayout) findViewById(R.id.login_TIL_Mailwrapper);
         edtEmail = (EditText) findViewById(R.id.editTextMail);
         edtPassword = (EditText) findViewById(R.id.editTextPassword);
@@ -50,7 +53,8 @@ public class LoginActivty  extends AppCompatActivity {
                 user.setEmail(email);
                 user.setPassword(password);
                 new AsyncTaskConnexion(LoginActivty.this, user,mailWrapper)
-                        .execute("http://172.20.10.3:8080/CentreonWebService/api/verifUser");
+                            .execute("http://172.20.10.3:8080/CentreonWebService/api/verifUser");
+
             }
             else{
                 mailWrapper.setError("Adresse email non valide");

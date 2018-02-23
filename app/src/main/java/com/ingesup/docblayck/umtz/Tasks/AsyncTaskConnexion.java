@@ -36,7 +36,7 @@ import javax.net.ssl.HttpsURLConnection;
  * Created by Najib on 16/02/2018.
  */
 
-public class AsyncTaskConnexion extends AsyncTask<String,String,String> {
+public class AsyncTaskConnexion extends AsyncTask<String,String,Boolean> {
 
 
     private ProgressDialog pDialog;
@@ -64,7 +64,7 @@ public class AsyncTaskConnexion extends AsyncTask<String,String,String> {
     }
 
     @Override
-    protected String doInBackground(String... strings) {
+    protected Boolean doInBackground(String... strings) {
 
         try {
 
@@ -103,25 +103,26 @@ public class AsyncTaskConnexion extends AsyncTask<String,String,String> {
                     break;
                 }
                 if(sb.toString().equals("true")){
-                    this.mailWrapper.setError(null);
+                    pDialog.dismiss();
                     GlobalData.getInstance().setUser(user);
                     Intent intent = new Intent(activity.getApplicationContext(), ServerListActivity.class);
                     activity.getApplicationContext().startActivity(intent);
                 }else{
+                    pDialog.dismiss();
                     Log.e("RETURN","FALSE");
-                    this.mailWrapper.setError("Mauvaise combinaison de mots de passes");
+                    return false;
                 }
-                pDialog.dismiss();
+
                 //user.setToken((new JSONObject(sb.toString())).getString("token"));
 
                 in.close();
-                return sb.toString();
+                return false;
             } else {
                 user = null;
-                return new String("false : " + responseCode);
+                return false;
             }
         } catch (Exception e) {
-            return new String("Exception: " + e.getMessage());
+            return false;
         }
 
     }
