@@ -104,7 +104,7 @@ public class RegisterActivity extends Activity {
     }
 
     private void doRegister(User u){
-        new AsyncTaskRegister(RegisterActivity.this, u).execute("https://reqres.in/api/login");
+        new AsyncTaskRegister(RegisterActivity.this, u).execute("http://172.20.10.3:8080/CentreonWebService/api/createUser");
 
     }
 }

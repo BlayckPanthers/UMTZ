@@ -16,6 +16,7 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -74,41 +75,42 @@ public class AsyncTaskRegister  extends AsyncTask<String,String,String> {
             Log.e("params",postDataParams.toString());
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setReadTimeout(15000 /* milliseconds */);
-            conn.setConnectTimeout(15000 /* milliseconds */);
-            conn.setRequestMethod("POST");
-            conn.setDoInput(true);
             conn.setDoOutput(true);
+            conn.setRequestMethod("POST"); // here you are telling that it is a POST request, which can be changed into "PUT", "GET", "DELETE" etc.
+            conn.setRequestProperty("Content-Type", "application/json"); // here you are setting the `Content-Type` for the data you are sending which is `application/json`
+            conn.connect();
 
-            OutputStream os = conn.getOutputStream();
-            BufferedWriter writer = new BufferedWriter(
-                    new OutputStreamWriter(os, "UTF-8"));
-            writer.write(getPostDataString(postDataParams));
+            DataOutputStream wr = new DataOutputStream(conn.getOutputStream());
+            wr.writeBytes(postDataParams.toString());
+            wr.flush();
+            wr.close();
 
-            writer.flush();
-            writer.close();
-            os.close();
-            int responseCode=conn.getResponseCode();
+            int responseCode = conn.getResponseCode();
 
             if (responseCode == HttpsURLConnection.HTTP_OK) {
 
-                BufferedReader in=new BufferedReader(new
+                BufferedReader in = new BufferedReader(new
                         InputStreamReader(
                         conn.getInputStream()));
 
                 StringBuffer sb = new StringBuffer("");
-                String line="";
+                String line = "";
 
-                while((line = in.readLine()) != null) {
+                while ((line = in.readLine()) != null) {
 
                     sb.append(line);
                     break;
                 }
-                user.setToken((new JSONObject(sb.toString())).getString("token"));
-                GlobalData.getInstance().setUser(user);
+                if(sb.toString().equals("true")){
+                    GlobalData.getInstance().setUser(user);
+                    Intent intent = new Intent(activity.getApplicationContext(), ServerListActivity.class);
+                    activity.getApplicationContext().startActivity(intent);
+                }else{
+                    Log.e("RETURN","FALSE");
+                }
                 pDialog.dismiss();
-                Intent intent = new Intent(activity.getApplicationContext(), ServerListActivity.class);
-                activity.getApplicationContext().startActivity(intent);
+                //user.setToken((new JSONObject(sb.toString())).getString("token"));
+
                 in.close();
                 return sb.toString();
             }

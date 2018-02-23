@@ -50,6 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
+            android:id="@+id/login_TIL_Mailwrapper"
             >
 
             <EditText
@@ -81,7 +82,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:background="@drawable/shape"
             android:gravity="center"
             android:onClick="buttonConnexionClick"
             android:text="@string/login_button_connexion" />

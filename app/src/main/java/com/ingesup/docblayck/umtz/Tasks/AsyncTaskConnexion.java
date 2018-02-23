@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.support.design.widget.TextInputLayout;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ import com.ingesup.docblayck.umtz.ServerActivity;
 import com.ingesup.docblayck.umtz.ServerListActivity;
 import com.loopj.android.http.RequestParams;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -38,15 +40,16 @@ public class AsyncTaskConnexion extends AsyncTask<String,String,String> {
 
 
     private ProgressDialog pDialog;
+    private TextInputLayout mailWrapper;
     private Activity activity;
     private User user;
     private Boolean isSignIn = false;
 
-    public AsyncTaskConnexion(Activity activity, User user, Boolean isSignIn) {
+    public AsyncTaskConnexion(Activity activity, User user,TextInputLayout mailWrapper ) {
 
         this.activity = activity;
         this.user = user;
-        this.isSignIn = isSignIn;
+        this.mailWrapper =mailWrapper;
 
     }
 
@@ -99,11 +102,18 @@ public class AsyncTaskConnexion extends AsyncTask<String,String,String> {
                     sb.append(line);
                     break;
                 }
-                user.setToken((new JSONObject(sb.toString())).getString("token"));
-                GlobalData.getInstance().setUser(user);
+                if(sb.toString().equals("true")){
+                    this.mailWrapper.setError(null);
+                    GlobalData.getInstance().setUser(user);
+                    Intent intent = new Intent(activity.getApplicationContext(), ServerListActivity.class);
+                    activity.getApplicationContext().startActivity(intent);
+                }else{
+                    Log.e("RETURN","FALSE");
+                    this.mailWrapper.setError("Mauvaise combinaison de mots de passes");
+                }
                 pDialog.dismiss();
-                Intent intent = new Intent(activity.getApplicationContext(), ServerListActivity.class);
-                activity.getApplicationContext().startActivity(intent);
+                //user.setToken((new JSONObject(sb.toString())).getString("token"));
+
                 in.close();
                 return sb.toString();
             } else {
