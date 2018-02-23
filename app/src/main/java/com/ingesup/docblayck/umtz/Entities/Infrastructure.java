@@ -12,16 +12,18 @@ public class Infrastructure implements Parcelable{
     private String server_name;
     private String server_ip;
     private int server_status;
+    private int server_ok;
     private int server_warning;
-    private int server_error;
+    private int server_critical;
     private int server_unkwown;
 
-    public Infrastructure(String server_name, String server_ip, int server_status, int server_warning, int server_error, int server_unkwown) {
+    public Infrastructure(String server_name, String server_ip, int server_status,int server_ok, int server_warning, int server_critical, int server_unkwown) {
         this.server_name = server_name;
         this.server_ip = server_ip;
         this.server_status = server_status;
+        this.server_ok=server_ok;
         this.server_warning = server_warning;
-        this.server_error = server_error;
+        this.server_critical = server_critical;
         this.server_unkwown = server_unkwown;
     }
 
@@ -30,7 +32,7 @@ public class Infrastructure implements Parcelable{
         server_ip = in.readString();
         server_status = in.readInt();
         server_warning = in.readInt();
-        server_error = in.readInt();
+        server_critical = in.readInt();
         server_unkwown = in.readInt();
     }
 
@@ -40,7 +42,7 @@ public class Infrastructure implements Parcelable{
         dest.writeString(server_ip);
         dest.writeInt(server_status);
         dest.writeInt(server_warning);
-        dest.writeInt(server_error);
+        dest.writeInt(server_critical);
         dest.writeInt(server_unkwown);
     }
 
@@ -85,6 +87,10 @@ public class Infrastructure implements Parcelable{
         this.server_status = server_status;
     }
 
+    public int getServer_ok() {return server_ok;}
+
+    public void setServer_ok(int server_ok) { this.server_ok = server_ok;}
+
     public int getServer_warning() {
         return server_warning;
     }
@@ -93,12 +99,12 @@ public class Infrastructure implements Parcelable{
         this.server_warning = server_warning;
     }
 
-    public int getServer_error() {
-        return server_error;
+    public int getServer_critical() {
+        return server_critical;
     }
 
-    public void setServer_error(int server_error) {
-        this.server_error = server_error;
+    public void setServer_critical(int server_critical) {
+        this.server_critical = server_critical;
     }
 
     public int getServer_unkwown() {

@@ -26,7 +26,7 @@ public class ServerListActivity extends Activity {
         //List<Infrastructure> myInfras = genererInfra();
         List<Infrastructure> myInfras;
         try{
-            myInfras = new AsyncTaskServers(this).execute("http://172.20.10.3:8080/CentreonWebService/api/verifUser").get();
+            myInfras = new AsyncTaskServers(this).execute("http://174.138.7.116:8080/CWS/api/centreon").get();
             InfrastructureAdapter adapter = new InfrastructureAdapter(ServerListActivity.this, myInfras);
 
             mListView.setAdapter(adapter);
@@ -46,10 +46,10 @@ public class ServerListActivity extends Activity {
     private List<Infrastructure> genererInfra(){
         List<Infrastructure> myList = new ArrayList<Infrastructure>();
 
-        myList.add(new Infrastructure("ns2307123.ovh.net","13.55.69.192",R.drawable.ic_green_button,0,0,0));
-        myList.add(new Infrastructure("ns2307456.ovh.net","13.55.69.193",R.drawable.ic_green_button,0,0,0));
-        myList.add(new Infrastructure("ns2307789.ovh.net","13.55.69.194",R.drawable.ic_green_button,0,0,0));
-        myList.add(new Infrastructure("ns2307112.ovh.net","13.55.69.191",R.drawable.ic_red_button,0,0,0));
+//        myList.add(new Infrastructure("ns2307123.ovh.net","13.55.69.192",R.drawable.ic_green_button,0,0,0));
+//        myList.add(new Infrastructure("ns2307456.ovh.net","13.55.69.193",R.drawable.ic_green_button,0,0,0));
+//        myList.add(new Infrastructure("ns2307789.ovh.net","13.55.69.194",R.drawable.ic_green_button,0,0,0));
+//        myList.add(new Infrastructure("ns2307112.ovh.net","13.55.69.191",R.drawable.ic_red_button,0,0,0));
 
         return myList;
     }

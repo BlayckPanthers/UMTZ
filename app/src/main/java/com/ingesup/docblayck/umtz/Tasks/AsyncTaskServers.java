@@ -13,7 +13,9 @@ import com.ingesup.docblayck.umtz.R;
 import com.ingesup.docblayck.umtz.ServerListActivity;
 import com.loopj.android.http.RequestParams;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
+import org.json.JSONStringer;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -25,6 +27,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -62,13 +65,12 @@ public class AsyncTaskServers extends AsyncTask<String,String,List<Infrastructur
     @Override
     protected List<Infrastructure> doInBackground(String... strings) {
         try {
-
+            List<Infrastructure> listServers=new ArrayList<>();
             URL url = new URL(strings[0]); // here is your URL path
 
             JSONObject postDataParams = new JSONObject();
-            postDataParams.put("login", GlobalData.getInstance().getUser());
+            postDataParams.put("login", GlobalData.getInstance().getUser().getEmail());
             Log.e("params", postDataParams.toString());
-
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setDoOutput(true);
             conn.setRequestMethod("POST"); // here you are telling that it is a POST request, which can be changed into "PUT", "GET", "DELETE" etc.
@@ -96,13 +98,23 @@ public class AsyncTaskServers extends AsyncTask<String,String,List<Infrastructur
                     sb.append(line);
                     break;
                 }
-                if(sb.toString().equals("true")){
-                    pDialog.dismiss();
-                    in.close();
-                    return null;
+                Log.e("SERVER",sb.toString());
+                JSONArray list = new JSONArray(sb.toString());
+                for(int i = 0 ; i < list.length() ; i++){
+
+                    String name= list.getJSONObject(i).getString("name");
+                    String adress=list.getJSONObject(i).getString("adress");
+                    int statusHost=Integer.parseInt(list.getJSONObject(i).getString("statusHost"));
+                    int nbOk=Integer.parseInt(list.getJSONObject(i).getString("nbOk"));
+                    int nbWarning=Integer.parseInt( list.getJSONObject(i).getString("nbWarning"));
+                    int nbCritical=Integer.parseInt(list.getJSONObject(i).getString("nbCritical"));
+                    int nbUnknown=Integer.parseInt(list.getJSONObject(i).getString("nbUnknown"));
+                    Infrastructure server = new Infrastructure(name,adress,statusHost,nbOk,nbWarning,nbCritical,nbUnknown);
+                    listServers.add(server);
                 }
+                in.close();
                 pDialog.dismiss();
-                return null;
+                return listServers;
             } else {
                 user = null;
                 return null;

@@ -53,7 +53,7 @@ public class LoginActivty  extends AppCompatActivity {
                 user.setEmail(email);
                 user.setPassword(password);
                 new AsyncTaskConnexion(LoginActivty.this, user,mailWrapper)
-                            .execute("http://172.20.10.3:8080/CentreonWebService/api/verifUser");
+                            .execute("http://174.138.7.116:8080/CWS/api/verifUser");
 
             }
             else{

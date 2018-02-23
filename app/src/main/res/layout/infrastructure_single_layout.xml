@@ -29,14 +29,16 @@
 
     </LinearLayout>
 
-    <ImageView
+    <Button
         android:id="@+id/infrastructure_server_status"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_toRightOf="@id/infrastructure_server"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="10dp" />
-
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/ic_green_button"
+        android:clickable="false"
+        android:text="0"
+        android:layout_toRightOf="@id/infrastructure_server"/>
     <Button
         android:id="@+id/infrastructure_button_ok"
         android:layout_width="30dp"
@@ -45,7 +47,7 @@
         android:layout_marginLeft="10dp"
         android:background="@drawable/ic_greenlight_button"
         android:clickable="false"
-        android:text="3"
+        android:text="0"
         android:layout_toRightOf="@id/infrastructure_server_status"/>
 
     <Button
@@ -56,7 +58,7 @@
         android:layout_marginLeft="10dp"
         android:background="@drawable/ic_orange_button"
         android:clickable="false"
-        android:text="15"
+        android:text="0"
         android:layout_toRightOf="@id/infrastructure_button_ok"/>
 
     <Button
@@ -68,7 +70,7 @@
         android:background="@drawable/ic_redlight_button"
         android:clickable="false"
 
-        android:text="2"
+        android:text="0"
         android:layout_toRightOf="@id/infrastructure_button_warning"/>
 
     <Button
