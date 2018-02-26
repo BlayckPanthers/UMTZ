@@ -16,4 +16,9 @@
     <string name="server_name_detail">Server Name</string>
     <string name="server_ip_detail">Server ip</string>
     <string name="loggin_textview_link">Pas de compte ? Inscrivez-vous</string>
+    <string name="dialog_message">Voulez-vous vous deconnecter ?</string>
+    <string name="dialog_title">Deconnexion</string>
+    <string name="ok">Oui</string>
+    <string name="cancel">Non</string>
+
 </resources>

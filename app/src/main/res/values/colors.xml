@@ -6,4 +6,5 @@
     <color name="colorStopButton">#F00</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorStartButton">#00cc00</color>
+    <color name="colorToolbar">#7c9b96</color>
 </resources>
