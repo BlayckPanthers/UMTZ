@@ -14,6 +14,7 @@ import com.ingesup.docblayck.umtz.Global.GlobalData;
 import com.ingesup.docblayck.umtz.R;
 import com.ingesup.docblayck.umtz.ServerActivity;
 import com.ingesup.docblayck.umtz.ServerListActivity;
+import com.ingesup.docblayck.umtz.Tools.EncryptPassword;
 import com.loopj.android.http.RequestParams;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
@@ -72,7 +73,7 @@ public class AsyncTaskConnexion extends AsyncTask<String,String,Boolean> {
 
             JSONObject postDataParams = new JSONObject();
             postDataParams.put("login", user.getEmail());
-            postDataParams.put("password", user.getPassword());
+            postDataParams.put("password", EncryptPassword.getMD5(user.getPassword()));
             Log.e("params", postDataParams.toString());
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();

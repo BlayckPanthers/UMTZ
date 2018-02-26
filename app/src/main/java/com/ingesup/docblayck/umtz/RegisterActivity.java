@@ -66,7 +66,6 @@ public class RegisterActivity extends Activity {
 
                 if(sPassword.equals(sConfirmPassword)){
                     edtConfirmPasswordWrapper.setError(null);
-                    sPassword = EncryptPassword.getMD5(sPassword);
                     Log.i("VAR 1",sPassword);
 
                     if(ipValidator.validateIpAddress(sIPCentreon)){
@@ -104,7 +103,7 @@ public class RegisterActivity extends Activity {
     }
 
     private void doRegister(User u){
-        new AsyncTaskRegister(RegisterActivity.this, u).execute("http://172.20.10.3:8080/CentreonWebService/api/createUser");
+        new AsyncTaskRegister(RegisterActivity.this, u).execute("http://174.138.7.116:8080/CWS/api/createUser");
 
     }
 }

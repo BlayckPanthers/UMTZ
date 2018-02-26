@@ -5,11 +5,14 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.ingesup.docblayck.umtz.Entities.User;
 import com.ingesup.docblayck.umtz.Global.GlobalData;
+import com.ingesup.docblayck.umtz.LoginActivty;
 import com.ingesup.docblayck.umtz.R;
 import com.ingesup.docblayck.umtz.ServerListActivity;
+import com.ingesup.docblayck.umtz.Tools.EncryptPassword;
 import com.loopj.android.http.RequestParams;
 
 import org.json.JSONObject;
@@ -55,23 +58,16 @@ public class AsyncTaskRegister  extends AsyncTask<String,String,String> {
     @Override
     protected String doInBackground(String... strings) {
 
-        RequestParams params = new RequestParams();
-        params.add("login",user.getEmail());
-        params.add("password",user.getPassword());
-        params.add("userCentreon",user.getUserCentreon());
-        params.add("passwordCentreon",user.getPasswordCentreon());
-        params.add("ipCentreon",user.getIpCentreon());
-
         try {
 
             URL url = new URL(strings[0]); // here is your URL path
 
             JSONObject postDataParams = new JSONObject();
             postDataParams.put("login", user.getEmail());
-            postDataParams.put("password", user.getPassword());
-            postDataParams.put("userCentreon",user.getUserCentreon());
-            postDataParams.put("passwordCentreon",user.getPasswordCentreon());
+            postDataParams.put("password", EncryptPassword.getMD5(user.getPassword()));
             postDataParams.put("ipCentreon",user.getIpCentreon());
+            postDataParams.put("loginCentreon",user.getUserCentreon());
+            postDataParams.put("passwordCentreon",user.getPasswordCentreon());
             Log.e("params",postDataParams.toString());
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -102,10 +98,15 @@ public class AsyncTaskRegister  extends AsyncTask<String,String,String> {
                     break;
                 }
                 if(sb.toString().equals("true")){
+                    pDialog.dismiss();
                     GlobalData.getInstance().setUser(user);
-                    Intent intent = new Intent(activity.getApplicationContext(), ServerListActivity.class);
+                    Intent intent = new Intent(activity.getApplicationContext(), LoginActivty.class);
+                    intent.putExtra("login",user.getEmail());
+                    intent.putExtra("password",user.getPassword());
                     activity.getApplicationContext().startActivity(intent);
+                    Toast.makeText(activity.getApplicationContext(), "Inscription réussie, veuillez vous connecté", Toast.LENGTH_LONG);
                 }else{
+                    pDialog.dismiss();
                     Log.e("RETURN","FALSE");
                 }
                 pDialog.dismiss();
@@ -124,33 +125,5 @@ public class AsyncTaskRegister  extends AsyncTask<String,String,String> {
         }
     }
 
-    @Override
-    protected void onPostExecute(String s) {
-        super.onPostExecute(s);
-    }
 
-    public String getPostDataString(JSONObject params) throws Exception {
-
-        StringBuilder result = new StringBuilder();
-        boolean first = true;
-
-        Iterator<String> itr = params.keys();
-
-        while(itr.hasNext()){
-
-            String key= itr.next();
-            Object value = params.get(key);
-
-            if (first)
-                first = false;
-            else
-                result.append("&");
-
-            result.append(URLEncoder.encode(key, "UTF-8"));
-            result.append("=");
-            result.append(URLEncoder.encode(value.toString(), "UTF-8"));
-
-        }
-        return result.toString();
-    }
 }

@@ -39,6 +39,19 @@ public class LoginActivty  extends AppCompatActivity {
         edtPassword = (EditText) findViewById(R.id.editTextPassword);
         txvLink = (TextView) findViewById(R.id.textViewLink);
 
+        Intent intent = getIntent();
+        Bundle extra = getIntent().getExtras();
+
+        // Si on vient d'un Intent (RegisterActivity)
+        if(extra != null) {
+            if(extra.containsKey("login") && extra.containsKey("password")){
+                String login = extra.getString("login");
+                String password = extra.getString("password");
+
+                this.edtEmail.setText(login);
+                this.edtPassword.setText(password);
+            }
+        }
     }
 
     public void buttonConnexionClick(View v){
