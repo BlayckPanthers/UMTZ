@@ -20,5 +20,6 @@
     <string name="dialog_title">Deconnexion</string>
     <string name="ok">Oui</string>
     <string name="cancel">Non</string>
+    <string name="server_textview_status">Server Status</string>
 
 </resources>

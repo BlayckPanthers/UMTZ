@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
+    >
+    <LinearLayout
+        android:id="@+id/serviceInfo1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/serviceInfo_Description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="bold|italic"
+            android:layout_below="@+id/infrastructure_server_name"
+            android:text="@string/infrastructure_textview_ip" />
+        <TextView
+            android:id="@+id/serviceInfo_LastCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="@string/infrastructure_textview_name" />
+
+        <TextView
+            android:id="@+id/serviceInfo_LastStateChange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:layout_below="@+id/infrastructure_server_name"
+            android:text="@string/infrastructure_textview_ip" />
+    </LinearLayout>
+    <Button
+        android:id="@+id/serviceInfo_State"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/ic_greenlight_button"
+        android:clickable="false"
+        android:layout_alignParentRight="true"/>
+
+</RelativeLayout>

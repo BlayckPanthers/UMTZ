@@ -2,33 +2,24 @@ package com.ingesup.docblayck.umtz.Tasks;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.ingesup.docblayck.umtz.Entities.Infrastructure;
+import com.ingesup.docblayck.umtz.Entities.Service;
 import com.ingesup.docblayck.umtz.Entities.User;
 import com.ingesup.docblayck.umtz.Global.GlobalData;
 import com.ingesup.docblayck.umtz.R;
-import com.ingesup.docblayck.umtz.ServerListActivity;
-import com.loopj.android.http.RequestParams;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.JSONStringer;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -38,14 +29,14 @@ import javax.net.ssl.HttpsURLConnection;
  * Created by Najib on 16/02/2018.
  */
 
-public class AsyncTaskServers extends AsyncTask<String,String,List<Infrastructure>> {
+public class AsyncTaskCheckService extends AsyncTask<String,String,List<Service>> {
 
 
     private ProgressDialog pDialog ;
     private Activity activity ;
     private User user ;
 
-    public AsyncTaskServers(Activity activity){
+    public AsyncTaskCheckService(Activity activity){
 
         this.activity = activity ;
         this.user = GlobalData.getInstance().getUser();
@@ -63,13 +54,14 @@ public class AsyncTaskServers extends AsyncTask<String,String,List<Infrastructur
     }
 
     @Override
-    protected List<Infrastructure> doInBackground(String... strings) {
+    protected List<Service> doInBackground(String... strings) {
         try {
-            List<Infrastructure> listServers=new ArrayList<>();
+            List<Service> listServices=new ArrayList<>();
             URL url = new URL(strings[0]); // here is your URL path
 
             JSONObject postDataParams = new JSONObject();
             postDataParams.put("login", GlobalData.getInstance().getUser().getEmail());
+            postDataParams.put("idHost", strings[1]);
             Log.e("params", postDataParams.toString());
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setDoOutput(true);
@@ -101,21 +93,19 @@ public class AsyncTaskServers extends AsyncTask<String,String,List<Infrastructur
                 Log.e("SERVER",sb.toString());
                 JSONArray list = new JSONArray(sb.toString());
                 for(int i = 0 ; i < list.length() ; i++){
-
-                    int id=Integer.parseInt(list.getJSONObject(i).getString("id"));
-                    String name= list.getJSONObject(i).getString("name");
-                    String adress=list.getJSONObject(i).getString("adress");
-                    int statusHost=Integer.parseInt(list.getJSONObject(i).getString("statusHost"));
-                    int nbOk=Integer.parseInt(list.getJSONObject(i).getString("nbOk"));
-                    int nbWarning=Integer.parseInt( list.getJSONObject(i).getString("nbWarning"));
-                    int nbCritical=Integer.parseInt(list.getJSONObject(i).getString("nbCritical"));
-                    int nbUnknown=Integer.parseInt(list.getJSONObject(i).getString("nbUnknown"));
-                    Infrastructure server = new Infrastructure(id,name,adress,statusHost,nbOk,nbWarning,nbCritical,nbUnknown);
-                    listServers.add(server);
+                    int host_id=Integer.parseInt(list.getJSONObject(i).getString("host_id"));
+                    String description= list.getJSONObject(i).getString("description");
+                    int service_id=Integer.parseInt(list.getJSONObject(i).getString("service_id"));
+                    int state=Integer.parseInt(list.getJSONObject(i).getString("state"));
+                    String output= list.getJSONObject(i).getString("output");
+                    double last_ckeck=Double.parseDouble( list.getJSONObject(i).getString("last_check"));
+                    double last_state_change=Double.parseDouble( list.getJSONObject(i).getString("last_state_change"));
+                    Service service = new Service(host_id,description,service_id,state,output,last_ckeck,last_state_change);
+                    listServices.add(service);
                 }
                 in.close();
                 pDialog.dismiss();
-                return listServers;
+                return listServices;
             } else {
                 user = null;
                 return null;

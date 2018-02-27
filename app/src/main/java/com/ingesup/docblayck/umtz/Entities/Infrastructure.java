@@ -9,6 +9,7 @@ import android.os.Parcelable;
 
 public class Infrastructure implements Parcelable{
 
+    private int server_id;
     private String server_name;
     private String server_ip;
     private int server_status;
@@ -27,7 +28,19 @@ public class Infrastructure implements Parcelable{
         this.server_unkwown = server_unkwown;
     }
 
+    public Infrastructure(int server_id,String server_name, String server_ip, int server_status, int server_ok, int server_warning, int server_critical, int server_unkwown) {
+        this.server_id=server_id;
+        this.server_name = server_name;
+        this.server_ip = server_ip;
+        this.server_status = server_status;
+        this.server_ok = server_ok;
+        this.server_warning = server_warning;
+        this.server_critical = server_critical;
+        this.server_unkwown = server_unkwown;
+    }
+
     protected Infrastructure(Parcel in) {
+        server_id=in.readInt();
         server_name = in.readString();
         server_ip = in.readString();
         server_status = in.readInt();
@@ -56,6 +69,7 @@ public class Infrastructure implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(server_id);
         parcel.writeString(server_name);
         parcel.writeString(server_ip);
         parcel.writeInt(server_status);
@@ -64,6 +78,10 @@ public class Infrastructure implements Parcelable{
         parcel.writeInt(server_critical);
         parcel.writeInt(server_unkwown);
     }
+
+    public int getServer_id() { return server_id;}
+
+    public void setServer_id(int server_id) {this.server_id = server_id;}
 
     public String getServer_name() {
         return server_name;

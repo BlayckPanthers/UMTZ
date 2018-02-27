@@ -1,69 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-
     <LinearLayout
-        android:layout_height="match_parent"
+        android:id="@+id/serverInfo"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_margin="35dip"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
-
-
+        android:layout_marginBottom="1dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="35dip"
+        android:layout_marginRight="35dip"
+        >
         <TextView
             android:id="@+id/server_name_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/server_textview_name"
+            android:textSize="20dp"
+            android:textStyle="bold|italic"
+            android:textColor="@color/colorPrimary"
             />
-
-
 
         <TextView
             android:id="@+id/server_ip_detail"
             android:layout_width="match_parent"
-            android:layout_height="270dp"
+            android:layout_height="wrap_content"
             android:text="@string/server_textview_ip"
             android:maxHeight="250dp"
             android:paddingTop="15dp"
+            android:gravity="right"
+            android:textColor="@color/colorPrimary"
             />
-
-       <!-- <Button
-            android:layout_width="match_parent"
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/serverInfo2"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="1dp"
+        android:orientation="horizontal"
+        android:layout_below="@+id/serverInfo"
+        android:layout_marginLeft="35dip"
+        android:layout_marginRight="35dip"
+        >
+        <TextView
+            android:id="@+id/server_status_detail"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/server_button_start"
-            android:textColor="@color/colorWhite"
-            android:backgroundTint="@color/colorStartButton"
+            android:layout_gravity="center_vertical"
+            android:text="@string/server_textview_status"
+            android:maxHeight="250dp"
+            android:paddingTop="15dp"
             />
-
         <Button
+            android:id="@+id/button_server_status_detail"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/ic_green_button"
+            android:clickable="false"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/serverServices"
+        android:layout_below="@+id/serverInfo2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dip"
+        android:layout_marginRight="35dip"
+        >
+        <ListView
+            android:id="@+id/serviceList"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/server_button_restart"
-            android:textColor="@color/colorWhite"
-            android:backgroundTint="@color/colorStartButton"
-            />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/server_button_stop"
-            android:textColor="@color/colorWhite"
-            android:backgroundTint="@color/colorStopButton"
-            /> -->
-
+            android:layout_height="match_parent" />
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/server_status_detail"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="35dip"
-        />
 </RelativeLayout>

@@ -32,16 +32,15 @@ public class ServerListActivity extends AppCompatActivity {
 
         // Liste contenant les serveurs générés.
         //List<Infrastructure> myInfras = genererInfra();
-        /*List<Infrastructure> myInfras;
+        List<Infrastructure> myInfras;
         try{
             myInfras = new AsyncTaskServers(this).execute("http://174.138.7.116:8080/CWS/api/centreon").get();
             InfrastructureAdapter adapter = new InfrastructureAdapter(ServerListActivity.this, myInfras);
-
             mListView.setAdapter(adapter);
             Toast.makeText(getApplicationContext(), GlobalData.getInstance().getUser().getEmail(),Toast.LENGTH_SHORT).show();
         }catch (Exception e){
 
-        } */
+        }
     }
 
 

@@ -58,15 +58,9 @@ public class InfrastructureAdapter extends ArrayAdapter<Infrastructure> {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), Server.getServer_status()
-                        , Toast.LENGTH_SHORT).show();
-
                 Intent itemIntent = new Intent(getContext(), ServerActivity.class);
                 itemIntent.putExtra("server_parcelable_extra",Server);
                 getContext().startActivity(itemIntent);
-
-
-
             }
         });
 

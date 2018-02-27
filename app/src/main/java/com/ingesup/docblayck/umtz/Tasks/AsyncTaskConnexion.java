@@ -73,7 +73,8 @@ public class AsyncTaskConnexion extends AsyncTask<String,String,Boolean> {
 
             JSONObject postDataParams = new JSONObject();
             postDataParams.put("login", user.getEmail());
-            postDataParams.put("password", EncryptPassword.getMD5(user.getPassword()));
+           // postDataParams.put("password", EncryptPassword.getMD5(user.getPassword()));
+            postDataParams.put("password", user.getPassword());
             Log.e("params", postDataParams.toString());
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
