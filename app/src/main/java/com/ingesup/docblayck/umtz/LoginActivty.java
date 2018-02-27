@@ -53,7 +53,10 @@ public class LoginActivty  extends AppCompatActivity {
             }
         }
     }
+    @Override
+    public void onBackPressed() {
 
+    }
     public void buttonConnexionClick(View v){
         String email = edtEmail.getText().toString();
         String password = edtPassword.getText().toString();

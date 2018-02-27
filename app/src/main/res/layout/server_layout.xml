@@ -30,6 +30,7 @@
             android:maxHeight="250dp"
             android:paddingTop="15dp"
             android:gravity="right"
+            android:textStyle="bold|italic"
             android:textColor="@color/colorPrimary"
             />
     </LinearLayout>
@@ -37,7 +38,7 @@
         android:id="@+id/serverInfo2"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_marginBottom="1dp"
+        android:layout_marginBottom="15dp"
         android:orientation="horizontal"
         android:layout_below="@+id/serverInfo"
         android:layout_marginLeft="35dip"
@@ -51,6 +52,8 @@
             android:text="@string/server_textview_status"
             android:maxHeight="250dp"
             android:paddingTop="15dp"
+            android:textStyle="bold|italic"
+            android:textColor="@color/colorPrimary"
             />
         <Button
             android:id="@+id/button_server_status_detail"
@@ -68,6 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="35dip"
         android:layout_marginRight="35dip"
+        android:background="@drawable/linearlayout_border"
         >
         <ListView
             android:id="@+id/serviceList"

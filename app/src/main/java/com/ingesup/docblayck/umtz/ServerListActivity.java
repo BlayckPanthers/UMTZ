@@ -102,7 +102,7 @@ public class ServerListActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Toast.makeText(getApplicationContext(),"Vous étes deja conncté",Toast.LENGTH_SHORT).show();
+
     }
 
     // TODO: Fonction de recuperation de la liste des serveurs en GET via Centreon
