@@ -4,12 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.ingesup.docblayck.umtz.Entities.User;
+import com.ingesup.docblayck.umtz.Services.FirebaseIDService;
 import com.ingesup.docblayck.umtz.Tasks.AsyncTaskConnexion;
 import com.ingesup.docblayck.umtz.Tools.EmailValidator;
 import com.ingesup.docblayck.umtz.Tools.EncryptPassword;

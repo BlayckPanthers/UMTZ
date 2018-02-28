@@ -18,6 +18,8 @@ import com.ingesup.docblayck.umtz.Tools.EmailValidator;
 import com.ingesup.docblayck.umtz.Tools.EncryptPassword;
 import com.ingesup.docblayck.umtz.Tools.IPAddressValidator;
 
+import java.util.concurrent.ExecutionException;
+
 public class RegisterActivity extends Activity {
 
     private TextInputLayout edtEmailWrapper, edtPasswordWrapper, edtConfirmPasswordWrapper,
@@ -76,7 +78,22 @@ public class RegisterActivity extends Activity {
                         edtIPCentreonWrapper.setError(null);
                         Log.i("ACCEPT","Tout est OK, envois des données");
                         User user = new User(sEmail,sPassword,sUserCentreon,sPasswordCentreon,sIPCentreon);
-                        doRegister(user);
+                        try {
+                            String result = new AsyncTaskRegister(RegisterActivity.this, user)
+                                    .execute("http://174.138.7.116:8080/CWS/api/createUser").get();
+
+                            if(result.equals("-1")){
+                                edtEmailWrapper.setError("Login déjà utilisé");
+                            }
+                            else if(result.equals("-2")){
+                                edtIPCentreonWrapper.setError("Adresse IP ou compte Centreon non reconnu");
+                            }
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        } catch (ExecutionException e) {
+                            e.printStackTrace();
+                        }
+
                     }
                     else{
                         edtIPCentreonWrapper.setError("Adresse IP non valide");
@@ -104,10 +121,5 @@ public class RegisterActivity extends Activity {
             ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).
                     hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         }
-    }
-
-    private void doRegister(User u){
-        new AsyncTaskRegister(RegisterActivity.this, u).execute("http://174.138.7.116:8080/CWS/api/createUser");
-
     }
 }

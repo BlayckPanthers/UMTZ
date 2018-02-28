@@ -10,52 +10,33 @@ import android.widget.Toast;
 import com.ingesup.docblayck.umtz.Entities.User;
 import com.ingesup.docblayck.umtz.Global.GlobalData;
 import com.ingesup.docblayck.umtz.LoginActivty;
-import com.ingesup.docblayck.umtz.R;
-import com.ingesup.docblayck.umtz.ServerListActivity;
 import com.ingesup.docblayck.umtz.Tools.EncryptPassword;
-import com.loopj.android.http.RequestParams;
 
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
-import java.util.Iterator;
 
 import javax.net.ssl.HttpsURLConnection;
 
 /**
- * Created by fabienlebon on 21/02/2018.
+ * Created by fabienlebon on 28/02/2018.
  */
 
-public class AsyncTaskRegister  extends AsyncTask<String,String,String> {
+public class AsyncTaskDeconnexion extends AsyncTask<String,String,String> {
 
     private ProgressDialog pDialog ;
     private Activity activity ;
     private User user ;
 
-    public AsyncTaskRegister(Activity activity, User user) {
+    public AsyncTaskDeconnexion(Activity activity, User user) {
         this.activity = activity;
         this.user = user;
     }
 
-    @Override
-    protected void onPreExecute() {
-        super.onPreExecute();
-        pDialog = new ProgressDialog(activity);
-        pDialog.setMessage(activity.getResources().getString(R.string.txt_Show));
-        pDialog.setIndeterminate(false);
-        pDialog.setCancelable(false);
-        pDialog.show();
-    }
-
-    @Override
     protected String doInBackground(String... strings) {
 
         try {
@@ -64,10 +45,6 @@ public class AsyncTaskRegister  extends AsyncTask<String,String,String> {
 
             JSONObject postDataParams = new JSONObject();
             postDataParams.put("login", user.getEmail());
-            postDataParams.put("password", EncryptPassword.getMD5(user.getPassword()));
-            postDataParams.put("ipCentreon",user.getIpCentreon());
-            postDataParams.put("loginCentreon",user.getUserCentreon());
-            postDataParams.put("passwordCentreon",user.getPasswordCentreon());
             Log.e("params",postDataParams.toString());
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -97,14 +74,10 @@ public class AsyncTaskRegister  extends AsyncTask<String,String,String> {
                     sb.append(line);
                     break;
                 }
-                if(sb.toString().equals("0")){
+                if(sb.toString().equals("true")){
                     pDialog.dismiss();
-                    GlobalData.getInstance().setUser(user);
-                    Intent intent = new Intent(activity.getApplicationContext(), LoginActivty.class);
-                    intent.putExtra("login",user.getEmail());
-                    intent.putExtra("password",user.getPassword());
-                    activity.getApplicationContext().startActivity(intent);
-                    Toast.makeText(activity.getApplicationContext(), "Inscription réussie, veuillez vous connecté", Toast.LENGTH_LONG);
+                    Log.d("Deconnexion : ","TRUE");
+                    GlobalData.getInstance().setUser(null);
                 }else{
                     pDialog.dismiss();
                     Log.e("RETURN","FALSE");
@@ -124,6 +97,5 @@ public class AsyncTaskRegister  extends AsyncTask<String,String,String> {
             return new String("Exception: " + e.getMessage());
         }
     }
-
 
 }
