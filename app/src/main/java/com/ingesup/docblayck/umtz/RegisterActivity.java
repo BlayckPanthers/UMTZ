@@ -11,6 +11,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.ingesup.docblayck.umtz.Entities.User;
+import com.ingesup.docblayck.umtz.Services.FirebaseIDService;
 import com.ingesup.docblayck.umtz.Tasks.AsyncTaskConnexion;
 import com.ingesup.docblayck.umtz.Tasks.AsyncTaskRegister;
 import com.ingesup.docblayck.umtz.Tools.EmailValidator;
@@ -25,6 +26,7 @@ public class RegisterActivity extends Activity {
     private IPAddressValidator ipValidator;
     private EmailValidator emailValidator;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +40,8 @@ public class RegisterActivity extends Activity {
         edtUserCentreonWrapper = (TextInputLayout) findViewById(R.id.register_edt_user_centreonWrapper);
         edtPasswordCentreonWrapper = (TextInputLayout) findViewById(R.id.register_edt_centreon_passwordWrapper);
         edtIPCentreonWrapper = (TextInputLayout) findViewById(R.id.register_edt_ip_centreonWrapper);
+
+
     }
 
     public void buttonAlreadyMemberClick(View view){

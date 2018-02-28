@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "938489807473",
+    "firebase_url": "https://utmz-196512.firebaseio.com",
+    "project_id": "utmz-196512",
+    "storage_bucket": "utmz-196512.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:938489807473:android:87a3ca6333cf3ec7",
+        "android_client_info": {
+          "package_name": "com.ingesup.docblayck.umtz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "938489807473-elvd54jj0fis7jar6hg5cu632u67q6ts.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLwGsndcKx8Y91hXSn_OMDM2xoez0Mr9o"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
