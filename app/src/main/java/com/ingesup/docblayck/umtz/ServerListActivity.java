@@ -1,9 +1,14 @@
 package com.ingesup.docblayck.umtz;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,8 +19,11 @@ import com.ingesup.docblayck.umtz.Adapters.InfrastructureAdapter;
 import com.ingesup.docblayck.umtz.Dao.UserDao;
 import com.ingesup.docblayck.umtz.Entities.Infrastructure;
 import com.ingesup.docblayck.umtz.Global.GlobalData;
+import com.ingesup.docblayck.umtz.Tasks.AsyncTaskConnexion;
+import com.ingesup.docblayck.umtz.Tasks.AsyncTaskDeconnexion;
 import com.ingesup.docblayck.umtz.Tasks.AsyncTaskServers;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,6 +77,9 @@ public class ServerListActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int id) {
                         GlobalData.getInstance().getUserDao().supprimer(GlobalData.getInstance().getUser().getEmail());
                         GlobalData.getInstance().setUser(null);
+                        new AsyncTaskDeconnexion(ServerListActivity.this, GlobalData.getInstance().getUser())
+                                .execute("http://174.138.7.116:8080/CWS/api/deconnexion");
+
                         Intent intent = new Intent(getApplicationContext(), LoginActivty.class);
                         startActivity(intent);
                     }
