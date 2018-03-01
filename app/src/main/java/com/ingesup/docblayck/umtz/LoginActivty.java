@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.ingesup.docblayck.umtz.Entities.User;
+import com.ingesup.docblayck.umtz.Global.GlobalData;
 import com.ingesup.docblayck.umtz.Services.FirebaseIDService;
 import com.ingesup.docblayck.umtz.Tasks.AsyncTaskConnexion;
 import com.ingesup.docblayck.umtz.Tools.EmailValidator;
@@ -36,6 +37,13 @@ public class LoginActivty  extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.login_layout);
 
+
+        //------------------------------------
+        User u = GlobalData.getInstance().getUserDao().selectionnerTout();
+        if(u!=null)
+            new AsyncTaskConnexion(LoginActivty.this, u,mailWrapper)
+                    .execute("http://174.138.7.116:8080/CWS/api/verifUser");
+        //------------------------------------
         emailValidator = new EmailValidator();
         mailWrapper = (TextInputLayout) findViewById(R.id.login_TIL_Mailwrapper);
         edtEmail = (EditText) findViewById(R.id.editTextMail);
