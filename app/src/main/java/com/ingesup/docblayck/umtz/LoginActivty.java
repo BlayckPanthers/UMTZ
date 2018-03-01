@@ -10,9 +10,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ingesup.docblayck.umtz.Dao.UserDao;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.ingesup.docblayck.umtz.Entities.User;
-import com.ingesup.docblayck.umtz.Global.GlobalData;
+import com.ingesup.docblayck.umtz.Services.FirebaseIDService;
 import com.ingesup.docblayck.umtz.Tasks.AsyncTaskConnexion;
 import com.ingesup.docblayck.umtz.Tools.EmailValidator;
 import com.ingesup.docblayck.umtz.Tools.EncryptPassword;
@@ -36,12 +36,6 @@ public class LoginActivty  extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.login_layout);
 
-        //------------------------------------
-        User u = GlobalData.getInstance().getUserDao().selectionnerTout();
-        if(u!=null)
-            new AsyncTaskConnexion(LoginActivty.this, u,mailWrapper)
-                    .execute("http://174.138.7.116:8080/CWS/api/verifUser");
-        //------------------------------------
         emailValidator = new EmailValidator();
         mailWrapper = (TextInputLayout) findViewById(R.id.login_TIL_Mailwrapper);
         edtEmail = (EditText) findViewById(R.id.editTextMail);
@@ -61,6 +55,8 @@ public class LoginActivty  extends AppCompatActivity {
                 this.edtPassword.setText(password);
             }
         }
+
+        Log.d("TOKEN : ", FirebaseInstanceId.getInstance().getToken());
     }
     @Override
     public void onBackPressed() {
