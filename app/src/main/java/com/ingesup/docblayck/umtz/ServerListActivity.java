@@ -1,14 +1,9 @@
 package com.ingesup.docblayck.umtz;
 
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,19 +11,16 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.ingesup.docblayck.umtz.Adapters.InfrastructureAdapter;
-import com.ingesup.docblayck.umtz.Dao.UserDao;
 import com.ingesup.docblayck.umtz.Entities.Infrastructure;
 import com.ingesup.docblayck.umtz.Global.GlobalData;
-import com.ingesup.docblayck.umtz.Tasks.AsyncTaskConnexion;
 import com.ingesup.docblayck.umtz.Tasks.AsyncTaskDeconnexion;
 import com.ingesup.docblayck.umtz.Tasks.AsyncTaskServers;
 
-import java.io.File;
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ServerListActivity extends AppCompatActivity {
-
+    List<Infrastructure> myInfras;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +32,6 @@ public class ServerListActivity extends AppCompatActivity {
 
         // Liste contenant les serveurs générés.
         //List<Infrastructure> myInfras = genererInfra();
-        List<Infrastructure> myInfras;
         try{
             myInfras = new AsyncTaskServers(this).execute("http://174.138.7.116:8080/CWS/api/centreon").get();
             InfrastructureAdapter adapter = new InfrastructureAdapter(ServerListActivity.this, myInfras);
@@ -99,9 +90,8 @@ public class ServerListActivity extends AppCompatActivity {
                 break;
             case R.id.action_download :
                 //TODO : Download PDF
-
-
-                Toast.makeText(this, "Action clicked 3 ", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(this, PDFViewActivity.class);
+                startActivity(intent);
                 break;
 
             default: return true;
@@ -119,15 +109,8 @@ public class ServerListActivity extends AppCompatActivity {
 
     // TODO: Fonction de recuperation de la liste des serveurs en GET via Centreon
     // Actuellement la liste est générée en dur. vert : Color.rgb(34,139,34) ; rouge :
-    private List<Infrastructure> genererInfra(){
-        List<Infrastructure> myList = new ArrayList<Infrastructure>();
+    private void genererInfraList(){
 
-//        myList.add(new Infrastructure("ns2307123.ovh.net","13.55.69.192",R.drawable.ic_green_button,0,0,0));
-//        myList.add(new Infrastructure("ns2307456.ovh.net","13.55.69.193",R.drawable.ic_green_button,0,0,0));
-//        myList.add(new Infrastructure("ns2307789.ovh.net","13.55.69.194",R.drawable.ic_green_button,0,0,0));
-//        myList.add(new Infrastructure("ns2307112.ovh.net","13.55.69.191",R.drawable.ic_red_button,0,0,0));
-
-        return myList;
     }
 
 
