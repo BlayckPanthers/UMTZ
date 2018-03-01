@@ -9,6 +9,7 @@ import android.support.design.widget.TextInputLayout;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.ingesup.docblayck.umtz.Dao.UserDao;
 import com.ingesup.docblayck.umtz.Entities.User;
 import com.ingesup.docblayck.umtz.Global.GlobalData;
 import com.ingesup.docblayck.umtz.R;
@@ -73,7 +74,7 @@ public class AsyncTaskConnexion extends AsyncTask<String,String,Boolean> {
 
             JSONObject postDataParams = new JSONObject();
             postDataParams.put("login", user.getEmail());
-           // postDataParams.put("password", EncryptPassword.getMD5(user.getPassword()));
+            //postDataParams.put("password", EncryptPassword.getMD5(user.getPassword()));
             postDataParams.put("password", user.getPassword());
             Log.e("params", postDataParams.toString());
 
@@ -104,11 +105,14 @@ public class AsyncTaskConnexion extends AsyncTask<String,String,Boolean> {
                     sb.append(line);
                     break;
                 }
+                in.close();
                 if(sb.toString().equals("true")){
                     pDialog.dismiss();
                     GlobalData.getInstance().setUser(user);
+                    GlobalData.getInstance().getUserDao().ajouter(user);
                     Intent intent = new Intent(activity.getApplicationContext(), ServerListActivity.class);
                     activity.getApplicationContext().startActivity(intent);
+                    return true;
                 }else{
                     pDialog.dismiss();
                     Log.e("RETURN","FALSE");
@@ -116,14 +120,13 @@ public class AsyncTaskConnexion extends AsyncTask<String,String,Boolean> {
                 }
 
                 //user.setToken((new JSONObject(sb.toString())).getString("token"));
-
-                in.close();
-                return false;
             } else {
                 user = null;
                 return false;
             }
         } catch (Exception e) {
+            e.printStackTrace();
+
             return false;
         }
 

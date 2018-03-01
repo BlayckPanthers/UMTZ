@@ -3,16 +3,15 @@ package com.ingesup.docblayck.umtz;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ingesup.docblayck.umtz.Adapters.ServiceAdapter;
 import com.ingesup.docblayck.umtz.Entities.Infrastructure;
 import com.ingesup.docblayck.umtz.Entities.Service;
 import com.ingesup.docblayck.umtz.Global.GlobalData;
 import com.ingesup.docblayck.umtz.Tasks.AsyncTaskCheckService;
-import com.ingesup.docblayck.umtz.Tasks.AsyncTaskServers;
 
 import java.util.List;
 

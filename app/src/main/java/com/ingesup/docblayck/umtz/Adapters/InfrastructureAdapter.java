@@ -1,4 +1,4 @@
-package com.ingesup.docblayck.umtz;
+package com.ingesup.docblayck.umtz.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ingesup.docblayck.umtz.Entities.Infrastructure;
+import com.ingesup.docblayck.umtz.R;
+import com.ingesup.docblayck.umtz.ServerActivity;
 
 import java.util.List;
 

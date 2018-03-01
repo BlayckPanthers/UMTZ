@@ -2,6 +2,7 @@ package com.ingesup.docblayck.umtz.Global;
 
 import android.app.Application;
 
+import com.ingesup.docblayck.umtz.Dao.UserDao;
 import com.ingesup.docblayck.umtz.Entities.User;
 
 /**
@@ -13,6 +14,7 @@ public class GlobalData  {
 
     // Global variable
     private User user;
+    private UserDao userDao;
 
     // Restrict the constructor from being instantiated
     private GlobalData(){}
@@ -24,6 +26,10 @@ public class GlobalData  {
         public void setUser(User user) {
             this.user = user;
         }
+
+    public UserDao getUserDao() { return userDao; }
+
+    public void setUserDao(UserDao userDao) {this.userDao = userDao;}
 
     public static synchronized GlobalData getInstance(){
         if(instance==null){

@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ingesup.docblayck.umtz.Dao.UserDao;
 import com.ingesup.docblayck.umtz.Entities.User;
+import com.ingesup.docblayck.umtz.Global.GlobalData;
 import com.ingesup.docblayck.umtz.Tasks.AsyncTaskConnexion;
 import com.ingesup.docblayck.umtz.Tools.EmailValidator;
 import com.ingesup.docblayck.umtz.Tools.EncryptPassword;
@@ -33,6 +36,12 @@ public class LoginActivty  extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.login_layout);
 
+        //------------------------------------
+        User u = GlobalData.getInstance().getUserDao().selectionnerTout();
+        if(u!=null)
+            new AsyncTaskConnexion(LoginActivty.this, u,mailWrapper)
+                    .execute("http://174.138.7.116:8080/CWS/api/verifUser");
+        //------------------------------------
         emailValidator = new EmailValidator();
         mailWrapper = (TextInputLayout) findViewById(R.id.login_TIL_Mailwrapper);
         edtEmail = (EditText) findViewById(R.id.editTextMail);

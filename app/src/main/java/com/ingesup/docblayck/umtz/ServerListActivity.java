@@ -1,8 +1,6 @@
 package com.ingesup.docblayck.umtz;
 
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +10,8 @@ import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.ingesup.docblayck.umtz.Adapters.InfrastructureAdapter;
+import com.ingesup.docblayck.umtz.Dao.UserDao;
 import com.ingesup.docblayck.umtz.Entities.Infrastructure;
 import com.ingesup.docblayck.umtz.Global.GlobalData;
 import com.ingesup.docblayck.umtz.Tasks.AsyncTaskServers;
@@ -67,6 +67,7 @@ public class ServerListActivity extends AppCompatActivity {
                 builder.setMessage(R.string.dialog_message).setTitle(R.string.dialog_title);
                 builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+                        GlobalData.getInstance().getUserDao().supprimer(GlobalData.getInstance().getUser().getEmail());
                         GlobalData.getInstance().setUser(null);
                         Intent intent = new Intent(getApplicationContext(), LoginActivty.class);
                         startActivity(intent);

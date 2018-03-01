@@ -1,4 +1,4 @@
-package com.ingesup.docblayck.umtz;
+package com.ingesup.docblayck.umtz.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 import com.ingesup.docblayck.umtz.Entities.Service;
+import com.ingesup.docblayck.umtz.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
