@@ -9,6 +9,7 @@ import android.support.design.widget.TextInputLayout;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.ingesup.docblayck.umtz.Dao.UserDao;
 import com.ingesup.docblayck.umtz.Entities.User;
 import com.ingesup.docblayck.umtz.Global.GlobalData;
@@ -75,7 +76,8 @@ public class AsyncTaskConnexion extends AsyncTask<String,String,Boolean> {
             JSONObject postDataParams = new JSONObject();
             postDataParams.put("login", user.getEmail());
             //postDataParams.put("password", EncryptPassword.getMD5(user.getPassword()));
-            postDataParams.put("password", user.getPassword());
+            postDataParams.put("password", EncryptPassword.getMD5(user.getPassword()));
+            postDataParams.put("tokenPhoneId", FirebaseInstanceId.getInstance().getToken());
             Log.e("params", postDataParams.toString());
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();

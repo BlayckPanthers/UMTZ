@@ -64,7 +64,7 @@ public class LoginActivty  extends AppCompatActivity {
             }
         }
 
-        Log.d("TOKEN : ", FirebaseInstanceId.getInstance().getToken());
+        //Log.d("TOKEN : ", FirebaseInstanceId.getInstance().getToken());
     }
     @Override
     public void onBackPressed() {

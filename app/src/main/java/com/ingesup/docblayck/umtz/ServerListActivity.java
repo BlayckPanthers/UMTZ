@@ -26,7 +26,7 @@ public class ServerListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.infrastructure_layout);
         getSupportActionBar().show();
-        getSupportActionBar().setBackgroundDrawable(getDrawable(R.color.colorToolbar));
+        getSupportActionBar().setBackgroundDrawable(getDrawable(R.color.colorPrimary));
         // ListView affichant la liste des serveurs
         ListView mListView = (ListView) findViewById(R.id.serverList);
 
@@ -38,7 +38,7 @@ public class ServerListActivity extends AppCompatActivity {
             mListView.setAdapter(adapter);
             Toast.makeText(getApplicationContext(), GlobalData.getInstance().getUser().getEmail(),Toast.LENGTH_SHORT).show();
         }catch (Exception e){
-
+            Toast.makeText(getApplicationContext(), "Connexion centreon impossible",Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -60,17 +60,14 @@ public class ServerListActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         switch(id){
             case R.id.action_logout :
-                //TODO : Dialog menant à la déconnexion
-
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setMessage(R.string.dialog_message).setTitle(R.string.dialog_title);
                 builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        GlobalData.getInstance().getUserDao().supprimer(GlobalData.getInstance().getUser().getEmail());
-                        GlobalData.getInstance().setUser(null);
                         new AsyncTaskDeconnexion(ServerListActivity.this, GlobalData.getInstance().getUser())
                                 .execute("http://174.138.7.116:8080/CWS/api/deconnexion");
-
+                        GlobalData.getInstance().getUserDao().supprimer(GlobalData.getInstance().getUser().getEmail());
+                        GlobalData.getInstance().setUser(null);
                         Intent intent = new Intent(getApplicationContext(), LoginActivty.class);
                         startActivity(intent);
                     }
