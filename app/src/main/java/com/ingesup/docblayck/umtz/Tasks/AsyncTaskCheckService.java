@@ -98,8 +98,8 @@ public class AsyncTaskCheckService extends AsyncTask<String,String,List<Service>
                     int service_id=Integer.parseInt(list.getJSONObject(i).getString("service_id"));
                     int state=Integer.parseInt(list.getJSONObject(i).getString("state"));
                     String output= list.getJSONObject(i).getString("output");
-                    double last_ckeck=Double.parseDouble( list.getJSONObject(i).getString("last_check"));
-                    double last_state_change=Double.parseDouble( list.getJSONObject(i).getString("last_state_change"));
+                    long last_ckeck=Long.parseLong( list.getJSONObject(i).getString("last_check"));
+                    long last_state_change=Long.parseLong( list.getJSONObject(i).getString("last_state_change"));
                     Service service = new Service(host_id,description,service_id,state,output,last_ckeck,last_state_change);
                     listServices.add(service);
                 }

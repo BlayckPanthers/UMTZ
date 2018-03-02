@@ -10,10 +10,10 @@ public class Service {
     private int service_id;
     private int state;
     private String output;
-    private double last_check;
-    private double last_state_change;
+    private long last_check;
+    private long last_state_change;
 
-    public Service(int host_id, String descritpion, int service_id, int state, String output, double last_check, double last_state_change) {
+    public Service(int host_id, String descritpion, int service_id, int state, String output, long last_check, long last_state_change) {
         this.host_id = host_id;
         this.descritpion = descritpion;
         this.service_id = service_id;
@@ -63,19 +63,19 @@ public class Service {
         this.output = output;
     }
 
-    public double getLast_check() {
+    public long getLast_check() {
         return last_check;
     }
 
-    public void setLast_check(double last_check) {
+    public void setLast_check(long last_check) {
         this.last_check = last_check;
     }
 
-    public double getLast_state_change() {
+    public long getLast_state_change() {
         return last_state_change;
     }
 
-    public void setLast_state_change(double last_state_change) {
+    public void setLast_state_change(long last_state_change) {
         this.last_state_change = last_state_change;
     }
 }

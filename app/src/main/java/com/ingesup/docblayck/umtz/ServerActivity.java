@@ -33,8 +33,8 @@ public class ServerActivity extends Activity {
 
         server_name_detail.setText(infrastructure.getServer_name());
         server_ip_detail.setText(infrastructure.getServer_ip());
-        button_server_status_detail.setText(String.valueOf(infrastructure.getServer_status()).equals("1")?"up":"Down");
-
+        //button_server_status_detail.setText(String.valueOf(infrastructure.getServer_status()).equals("1")?"up":"Down");
+        button_server_status_detail.setBackground(String.valueOf(infrastructure.getServer_status()).equals("1")?getDrawable(R.drawable.ic_greenlight_button):(String.valueOf(infrastructure.getServer_status()).equals("2")?getDrawable(R.drawable.ic_orange_button):(String.valueOf(infrastructure.getServer_status()).equals("3")?getDrawable(R.drawable.ic_redlight_button):getDrawable(R.drawable.ic_grey_button))));
 
         // Liste contenant les serveurs générés.
         List<Service> myServices;

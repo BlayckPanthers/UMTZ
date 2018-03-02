@@ -52,8 +52,10 @@ public class InfrastructureAdapter extends ArrayAdapter<Infrastructure> {
         // Remplissage de la vue.
         viewHolder.server_name.setText(Server.getServer_name());
         viewHolder.server_ip.setText(Server.getServer_ip());
-        viewHolder.server_status.setText(String.valueOf(Server.getServer_status()).equals("1")?"up":"Down");
+        //viewHolder.server_status.setText(String.valueOf(Server.getServer_status()).equals("1")?"up":"Down");
+        viewHolder.server_status.setBackground(String.valueOf(Server.getServer_status()).equals("1")?getContext().getDrawable(R.drawable.ic_greenlight_button):(String.valueOf(Server.getServer_status()).equals("2")?getContext().getDrawable(R.drawable.ic_orange_button):(String.valueOf(Server.getServer_status()).equals("3")?getContext().getDrawable(R.drawable.ic_redlight_button):getContext().getDrawable(R.drawable.ic_grey_button))));
         viewHolder.server_ok.setText(String.valueOf(Server.getServer_ok()));
+        viewHolder.server_error.setText(String.valueOf(Server.getServer_critical()));
         viewHolder.server_warning.setText(String.valueOf(Server.getServer_warning()));
         viewHolder.server_unkwown.setText(String.valueOf(Server.getServer_unkwown()));
 

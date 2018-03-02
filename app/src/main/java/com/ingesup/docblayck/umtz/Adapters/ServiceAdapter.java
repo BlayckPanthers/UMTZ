@@ -1,6 +1,7 @@
 package com.ingesup.docblayck.umtz.Adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import com.ingesup.docblayck.umtz.Entities.Service;
 import com.ingesup.docblayck.umtz.R;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -45,10 +47,11 @@ public class ServiceAdapter extends ArrayAdapter<Service> {
 
         // Remplissage de la vue.
         viewHolder.service_description.setText(service.getDescritpion());
-        viewHolder.service_State.setBackground(String.valueOf(service.getState()).equals("0")?getContext().getDrawable(R.drawable.ic_greenlight_button):getContext().getDrawable(R.drawable.ic_redlight_button));
+        viewHolder.service_State.setBackground(String.valueOf(service.getState()).equals("0")?getContext().getDrawable(R.drawable.ic_greenlight_button):(String.valueOf(service.getState()).equals("1")?getContext().getDrawable(R.drawable.ic_orange_button):(String.valueOf(service.getState()).equals("2")?getContext().getDrawable(R.drawable.ic_redlight_button):getContext().getDrawable(R.drawable.ic_grey_button))));
         //viewHolder.service_LastCheck.setText(String.valueOf(service.getLast_check()));
-        viewHolder.service_LastCheck.setText(new SimpleDateFormat("HH:mm:ss").format(new Date(((Double)service.getLast_check()).intValue())));
-        viewHolder.service_LastStateChange.setText(new SimpleDateFormat("HH:mm:ss").format(new Date(((Double)service.getLast_state_change()).intValue())));
+        Log.e("LastCheck",String.valueOf(service.getLast_check()));
+        viewHolder.service_LastCheck.setText("Last Check : "+new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date(service.getLast_check()*1000L)));
+        viewHolder.service_LastStateChange.setText("Last State Change : "+new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date(service.getLast_state_change()*1000L)));
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
